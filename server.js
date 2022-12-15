@@ -32,6 +32,11 @@ app.post("/product", async (req, res) => {
   }
 });
 
+app.get("/getProduct", async(req,res)=>{
+    let Items = await ProductModel.find();
+    res.send(Items);
+})
+
 app.delete("/delete/:productId", async (req, res) => {
   const { productId } = req.params;
   let deleteProduct = await ProductModel.findOneAndDelete({ _id: productId });
